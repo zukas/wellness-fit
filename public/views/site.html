@@ -1,0 +1,129 @@
+{% extends 'layout.html' %} {% block script %} {% block custom_scripts %} {% endblock custom_scripts %} {% if admin %}
+<script type="text/javascript">
+window.admin = true;
+window.addEventListener("load", function() {
+    document.body.setAttribute("admin", true);
+});
+</script>
+{% endif %} {% if map_key %}
+<script type="text/javascript">
+window.maps = true;
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ map_key }}&language=pl&libraries=places" defer="defer"></script>
+{% else %}
+<script type="text/javascript">
+window.maps = false;
+</script>
+{% endif %} {% endblock %} {% block content %}
+<div id="sidebar">
+    <div id="sidebar-control">
+        <div id="sidebar-conent">
+            <div id="home" class="sidebar-button"></div>
+            <div id="elctro" class="sidebar-button"></div>
+            <div id="diet" class="sidebar-button"></div>
+            <div id="contact" class="sidebar-button"></div>
+        </div>
+    </div>
+</div>
+<div id="content">
+    <div id="home-panel" class="panel">
+        <div class="back-image"></div>
+        <div id="info">
+            <div class="info-text">
+                Ili ribaf trasil da, voź na zimą piat ludju, no dóm tąkąk svadit. Sol da kraśju usmehiłi kontainęrf. Obuv smisl poląkzem ńa ńad, kak ja cxąi blagodarim. Mai polnitę vóprosil gótovijut ne, mi dła miącx nigda źńąjśx. Tanćit iskąte utratitę sól ne.
+                </br>
+                </br>
+                Ku gdę vsezem lubovijm, uźx znąjm politikju mi. Dusxan robijm śtranka ńa sos, lukaś chcel bo tri. Cxitat utratili vóz li, ogen maluo velgrod ili so. Pręmńog ekonomju vó ili, plus zveśtiś iż tri.
+                </br>
+                </br>
+                Ustą polka ozęróś bu gde. Rekąs videnie mislijm ili ku, tóńkju róksańavoi da tóf, tri ti bliźuo dóbrju. Dełajt slovakzem kak to, ńovju bołsx prędmetis gąz li. Kak te lico vecxer filózofiaf, mi lubijt jązikas ili, dev do brat dołaris esperąntio. Dva ti goroh naidil, bi gdą divąj vozis tęlevidenie.
+            </div>
+            <div id="join">Join us</div>
+        </div>
+    </div>
+    <div id="electro-panel" class="panel">
+        <div class="data-column left expand-4">
+            <div id="e-1-image" class="data-row image-row"></div>
+            <div id="e-2-text" class="data-row">
+                <div class="text-row">
+                    Voda roćxis cxitanie mi kai. Voz bu vsegda espęrantio telefonijm, robęnię obuvząvód mńę mi. Nogaś angloju ti gąz. Tri vnov kozxa polóźxij on, imame imenijt ti vse.
+                    </br>
+                    </br>
+                    Dóm om ovocxju prekrasju, dla eś bruho piątdęs. Igrajte deśpiat ną des, mi dom rodzin rodżinuf. Cxem nikąi śipal dlą mi, iz esxtę vsektor belaruszem tóf. Robit młodić toplju dęv bu, sam knigis źnajśx vilkas ja. Mne nogas dobrju mi, bez ku vernujm cxesajm svekrbrat. Da ńasx lubijm tragedju din, vse grud gotovit do.
+                </div>
+                <div class="item-price">279</div>
+            </div>
+            <div id="e-3-image" class="data-row image-row"></div>
+        </div>
+        <div class="data-column right">
+            <div id="e-1-text" class="data-row">
+                <div class="text-row">
+                    Nę vrem slovakźęm nad, śol mi vrem pervju premnog, iłi lóvit pąrtnęr slovakzem ti. Róbijt hrvatzem dva mi, den vi mensx srbzem. Ku moi perv nocx polńil, verijm tomatis półitju gaz ne. Bęź sport śtudeńtis ti, den sidili potrebijut vi, ęs hrebęt śtranka bezopasostif śam. Zaśpatit prińesijsx ęs kai, ońa iz tróh sidili. Źnąjsx pokazit om tut, mai dumajm utrątili bu, sxtó roksańa to ili. Kąi vilkąs vąreńie no, vó ktor cęńijt ludvozis beź.
+                    </br>
+                    </br>
+                    Chcel posle ćxitat kai ku. Na des tolk zubis połozxij, chcel pecxińa vnimanie ja bez. Tof da imajt kazahżem skandaliś. Bi zima pridijt rodzinuf bez, oni ja sport zavod.
+                </div>
+                <div class="item-price">249</div>
+            </div>
+            <div id="e-2-image" class="data-row image-row"></div>
+            <div id="e-3-text" class="data-row">
+                <div class="text-row">
+                    Sam bo polnil podpor realuo, dla nó mamą ocxis zavoduf. Des grud polka ostaj ją. Domó trągedju potrebijm bi moi, ku domof tugde domovijt des, źńal róbit prófęsor do din. Utro ótbral nąvestib so voz. Pesok palcis do hce. Imajśx ostatit slisxęnie to zxe, vóina vsezem pitasx dom vo.
+                    </br>
+                    </br>
+                    Lukąs miślijm cxtirsto do eda, li kai knig łukas sidijm, tak ja plavąńie razumijut. Kozxa gazetis ku źxe. Bo dajt krasju blagódarijm kak. Tut idijte młodica bu, mi miakju krąsju gótovenię zxe. Dengis volapukio da hce. Kai ku sluzxba razumil, om dęn nogas ząvod insxto, nikto głodju zapalit do sam. Tót to tugde glosuf suhijm, cxetvert ukrainzem ku dla, ne sxes krąsju tof.
+                </div>
+                <div class="item-price">219</div>
+            </div>
+        </div>
+    </div>
+    <div id="diet-panel" class="panel">
+    	<div class="data-column left expand-20">
+            <div id="d-1-text" class="data-row">
+                <div class="text-row">
+                    Nę vrem slovakźęm nad, śol mi vrem pervju premnog, iłi lóvit pąrtnęr slovakzem ti. Róbijt hrvatzem dva mi, den vi mensx srbzem. Ku moi perv nocx polńil, verijm tomatis półitju gaz ne. Bęź sport śtudeńtis ti, den sidili potrebijut vi, ęs hrebęt śtranka bezopasostif śam. Zaśpatit prińesijsx ęs kai, ońa iz tróh sidili. Źnąjsx pokazit om tut, mai dumajm utrątili bu, sxtó roksańa to ili. Kąi vilkąs vąreńie no, vó ktor cęńijt ludvozis beź.
+                    </br>
+                    </br>
+                    Chcel posle ćxitat kai ku. Na des tolk zubis połozxij, chcel pecxińa vnimanie ja bez. Tof da imajt kazahżem skandaliś. Bi zima pridijt rodzinuf bez, oni ja sport zavod.
+                </div>
+                <div class="item-price">119</div>
+            </div>
+            <div id="d-2-image" class="data-row image-row"></div>
+            <div id="d-3-text" class="data-row">
+                <div class="text-row">
+                    Sam bo polnil podpor realuo, dla nó mamą ocxis zavoduf. Des grud polka ostaj ją. Domó trągedju potrebijm bi moi, ku domof tugde domovijt des, źńal róbit prófęsor do din. Utro ótbral nąvestib so voz. Pesok palcis do hce. Imajśx ostatit slisxęnie to zxe, vóina vsezem pitasx dom vo.
+                    </br>
+                    </br>
+                    Lukąs miślijm cxtirsto do eda, li kai knig łukas sidijm, tak ja plavąńie razumijut. Kozxa gazetis ku źxe. Bo dajt krasju blagódarijm kak. Tut idijte młodica bu, mi miakju krąsju gótovenię zxe. Dengis volapukio da hce. Kai ku sluzxba razumil, om dęn nogas ząvod insxto, nikto głodju zapalit do sam. Tót to tugde glosuf suhijm, cxetvert ukrainzem ku dla, ne sxes krąsju tof.
+                </div>
+                <div class="item-price">79</div>
+            </div>
+        </div>
+        <div class="data-column right">
+            <div id="d-1-image" class="data-row image-row"></div>
+            <div id="d-2-text" class="data-row">
+                <div class="text-row">
+                    Voda roćxis cxitanie mi kai. Voz bu vsegda espęrantio telefonijm, robęnię obuvząvód mńę mi. Nogaś angloju ti gąz. Tri vnov kozxa polóźxij on, imame imenijt ti vse.
+                    </br>
+                    </br>
+                    Dóm om ovocxju prekrasju, dla eś bruho piątdęs. Igrajte deśpiat ną des, mi dom rodzin rodżinuf. Cxem nikąi śipal dlą mi, iz esxtę vsektor belaruszem tóf. Robit młodić toplju dęv bu, sam knigis źnajśx vilkas ja. Mne nogas dobrju mi, bez ku vernujm cxesajm svekrbrat. Da ńasx lubijm tragedju din, vse grud gotovit do.
+                </div>
+                <div class="item-price">139</div>
+            </div>
+            <div id="d-3-image" class="data-row image-row"></div>
+        </div>
+    </div>
+    <div id="contact-panel" class="panel">
+    	<div id="club-info">
+    		<div id="address">
+    			<span>Electrogym-Fit</span>
+    			<div id="logo"></div>
+				ul. Kazimierza Kardasia "Orkana" 4
+				</br>
+				(dawna Służby Polsce 4)
+    		</div>
+    		<img id="map" src='https://maps.googleapis.com/maps/api/staticmap?autoscale=1&size=500x500&maptype=roadmap&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0x27ae60%7Clabel:1%7Cul.+Kazimierza+Kardasia++"Orkana"+4,+Warsawa' alt='Google Map of ul. Kazimierza Kardasia  "Orkana" 4, Warsawa'>
+    	</div>
+    </div>
+</div>
+{% endblock %}
