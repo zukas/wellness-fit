@@ -3,7 +3,7 @@ const util = require('util');
 
 global.format = util.format;
 
-require("./utils")
+require("./utils");
 
 var db = require("./db"),
     hasher = require('password-hash');
@@ -12,7 +12,7 @@ if (process.argv.length != 4) {
     console.log("usage init.js [username] [password]");
 } else {
     db.start({
-        config.db,
+        db: config.db,
         collections: [
             "users",
             "images"

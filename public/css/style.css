@@ -66,17 +66,27 @@ input::-moz-focus-inner {
     --green:  #27ae60;
     --green-d: #239c56;
     --green-l: #3cb66f;
+
+    --h1-font-size: 1.5em;
+    --h2-font-size: 1.2em;
+    --body-font-size: 1em;
+
+    --h1-line-height: 1.8em;
+    --h2-line-height: 1.4em;
+    --body-line-height: 1.2em;
 }
 
+b {
+    font-weight: bold;
+}
 
 html {
-    min-width: 720px;
+    min-width: 960px;
     width: 100%;
     height: 100%;
     overflow: hidden;
     scroll-behavior: smooth;
-    font-family: Cantarell;
-    font-size: 1.2em;
+    font-family: 'Signika', sans-serif;
 }
 
 body {
@@ -85,13 +95,18 @@ body {
     left: 0px;
     right: 0px;
     bottom: 0px;
-    min-width: 720px;
+    min-width: 960px;
     width: 100%;
     height: 100%;
     min-height: 100%;
     overflow: visible;
     scroll-behavior: smooth;
     background: var(--white);
+
+}
+
+textarea, input { 
+    font-family: 'Signika', sans-serif;
 }
 
 .no-select {
@@ -107,11 +122,31 @@ body {
     outline: none;
 }
 
+.standard-button {
+    position: relative;
+    width: 220px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: var(--gold);
+    color: var(--blue);
+}
+
+.standard-button:hover {
+    box-shadow: inset 0px 1px 2px var(--blue-d);
+    background: var(--gold-l);
+}
+
 #sidebar {
     position: absolute;
     left: 0px;
     top: 0px;
-    width: 280px;
+    width: 80px;
     height: 100%;
     z-index: 999;
 }
@@ -151,10 +186,10 @@ body {
 }
 
 .sidebar-button:hover {
-    box-shadow: inset 0px -1px 1px var(--green);
+    box-shadow: inset 0px -1px 1px var(--gold);
 }
 
-#content {
+#content-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -165,13 +200,15 @@ body {
 
 .panel {
     position: relative;
+    display: inline-block;
+    box-sizing: border-box;
     width: 100%;
     min-height: 200px;
-    box-sizing: border-box;
 }
 
 #home-panel {
-    height: 49.338vw;
+    min-height: 49.338vw;
+    padding-bottom: 20px;
 }
 
 #home-panel .back-image {
@@ -184,7 +221,8 @@ body {
     height: 100%;
     background-image: url("../images/main.jpg");
     background-repeat: no-repeat;
-    background-size: 100% 49.338vw;
+    background-size: cover;
+    background-position: center;
     opacity: 0.9;
 }
 
@@ -192,181 +230,399 @@ body {
     margin-bottom: 0px;
 }
 
-#info {
-    position: absolute;
-    width: 600px;
-    height: 500px;
-    padding: 40px;
-    border-radius: 3px;
-    left: 50%;
-    margin-left: -300px;
-    top: 50%;
-    margin-top: -250px;
+#login {
+    position: relative;
+    width: 505px;
+    height: 40px;
+    border-bottom-left-radius: 3px;
+    top: 0px;
+    left: 100%;
+    margin-left: -505px;
     box-sizing: border-box;
     color: var(--white);
     background: var(--blue);
 }
 
-#join {
-    position: absolute;
-    width: 220px;
-    height: 60px;
-    left: 50%;
-    margin-left: -110px;
-    bottom: 40px;
+#login input {
+    position: relative;
+    border:none;
+    box-sizing: border-box;
+    color: var(--blue);
+    line-height: 30px;
+    max-width: 100%;
+    background: transparent;
+}
+
+#user-name, #user-pass {
+    position: relative;
+    display: inline-block;
+    background: var(--white);
+    border-radius: 4px;
+    width: 180px;
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+#do-login {
+    position: relative;
+    display: inline-block;
+    background: var(--gold);
+    color: var(--blue);
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    float: right;
     text-align: center;
-    line-height: 60px;
-    border-radius: 3px;
     cursor: pointer;
-    background: var(--green);
 }
 
-#join:hover {
+#do-login:hover {
     box-shadow: inset 0px 1px 2px var(--blue-d);
-    background: var(--green-l);
+    background: var(--gold-l);
 }
 
+#current-user {
+    position: relative;
+    display: inline-block;
+    color: var(--white);
+    border-radius: 4px;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+#do-logout {
+    position: relative;
+    display: inline-block;
+    background: var(--red);
+    color: var(--blue);
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    float: right;
+    text-align: center;
+    cursor: pointer;
+}
+
+#do-logout:hover {
+    box-shadow: inset 0px 1px 2px var(--blue-d);
+    background: var(--red-l);
+}
+
+#info {
+    position: relative;
+    width: 40vw;
+    min-width: 505px;
+    height: auto;
+    padding: 40px;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vw;
+    margin-bottom: 10vw;
+    box-sizing: border-box;
+    color: var(--white);
+    background: var(--blue);
+}
+
+
+.logo {
+    display: block;
+    position: relative;
+    width: 300px;
+    height: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    background-image: url("../images/logo-i.svg");
+}
+
+#join {
+
+}
+
+
+#info-text-edit-control {
+    display: block;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background-image: url("../images/edit-white.png");
+    background-size: 28px 28px;
+    border-radius: 4px;
+    top: -30px;
+    left: -30px;
+    cursor: pointer;
+}
+
+#info-text-edit-control[active="true"] {
+    background-image: url("../images/done-i.png");
+}
+
+#info-text-edit-control:hover {
+    background-color: var(--blue-l);
+}
+
+textarea.info-text {
+    resize: none;
+    background-color: var(--blue);
+    outline: none;
+    border: none;
+    color: var(--white);
+    padding: 0px;
+    box-shadow: inset 0px 0px 5px var(--gold-d);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#info-text-edit {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
 
 .info-text {
     position: relative;
     width: 100%;
-    font-size: 0.9em;
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
+    border: none;
     box-sizing: border-box;
-    line-height: 1.2em;
 }
 
 #electro-panel {
     background: var(--white);
 }
 
-#diet-panel {
+#list-panel {
     background: var(--white);
+}
+
+#training-info {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+    border-spacing: 2vw 0px;
+    overflow: hidden;
+    box-sizing: border-box;
+    color: var(--white);
+    vertical-align: middle;
+}
+
+
+#training-info .training-info-item {
+    display: table-cell;
+    max-width: 30%;
+    padding: 20px;
+    border-radius: 4px;
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: var(--h2-font-size);
+    line-height: var(--h2-line-height);
+    color: var(--blue);
+    background-color: var(--green);
+    vertical-align: middle;
+}
+
+#training-info .training-info-item:nth-child(2) {
+    background-color: var(--gold);
+}
+
+#training-info .training-info-item:nth-child(3) {
+    background-color: var(--red);
+}
+
+
+#training-ems {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+    border-spacing: 2vw 0px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#training-ems .training-ems-item {
+    display: table-cell;
+    max-width: 50%;
+    padding: 20px;
+    border-radius: 4px;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
+    color: var(--white);
+    background-color: var(--blue);
+}
+
+#training-ems .training-ems-item:nth-child(1) {
+    text-align: right;
+}
+
+#training-ems .training-ems-item:nth-child(2) {
+    text-align: left;
+}
+
+#training-ems .training-ems-item .title {
+    font-size: var(--h1-font-size);
+    line-height: var(--h1-line-height);
+    margin-bottom: 20px;
+}
+
+#training-ems .training-ems-item table {
+    position: relative;
+    display: table;
+    table-layout: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    border-spacing: 15px;
+}
+
+#training-ems .training-ems-item table th {
+    font-size: var(--h2-font-size);
+    line-height: var(--h2-line-height);
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 15px;
+    padding-right: 5px;
+}
+
+#training-ems .training-ems-item table td {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding: 5px 0px;
+    padding-right: 5px;
 }
 
 #contact-panel {
     background: var(--blue);
 }
 
-.data-column {
-    position: relative;
-    display: inline-block;
-    width: 50%;
+#add-service {
+    margin-left: 0px;
+    background-image: url(../images/add.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50px;
     box-sizing: border-box;
-    margin: 0px 0px 0px 0px;
 }
 
-.data-column.expand-4 {
-    padding-bottom: 4vw;
-}
-
-
-.data-column.expand-20 {
-    padding-bottom: 20vw;
-}
-
-.data-column:nth-child(even) {
-    float: right;
-    padding-bottom: 0px;
-    padding-top: 4vw;
-}
-
-.data-column:after {
-    clear: both;
+#tech-data {
+    display: table;
+    table-layout: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    border-spacing: 20px;
+    padding: 0px 10px;
 }
 
 .data-row {
     position: relative;
-    display: inline-block;
-    width: 90%;
-    margin-top: 2vw;
-    margin-left: 2vw;
-    padding: 20px;
-    background: var(--blue);
-    border-radius: 0.3vw;
-    box-sizing: border-box;
-}
-
-.text-row {
-    position: relative;
-    display: inline-block;
+    display: table-cell;
     width: 100%;
-    color: var(--white);
-    font-size: 0.9em;
-    line-height: 1.2em;
+    height: 100%;
+    padding: 20px;
     box-sizing: border-box;
+    border-radius: 4px;
+    color: var(--blue);
 }
 
-.image-row {
-    width: 28vw;
-    height: 28vw;
-    background-size: 28vw 28vw;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
-}
-
-.item-price {
-    position: relative;
-    display: inline-block;
+.data-row:nth-child(1) {
     background: var(--green);
-    color: var(--white);
-    width: 200px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 3px;
-    margin-top: 10px;
-    left: 50%;
-    margin-left: -100px;
-    text-align: center;
+}
+
+.data-row:nth-child(2) {
+    background: var(--gold);
+}
+
+.data-row:nth-child(3) {
+    background: var(--red);
+}
+
+.row-content {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
     box-sizing: border-box;
+}
+
+.row-content.splash {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.row-content .row-image {
+    position: relative;
+    bottom: 0px;
+    display: block;
+    height: auto;
+    width: 100%;
+    padding-top: 100%;
+    max-height: 100%;
+    background-size: cover;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.row-content .title {
+    font-size: var(--h2-font-size);
+    line-height: var(--h2-line-height);
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.row-content .row-text {
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
+}
+
+.row-content .item-price {
 }
 
 .item-price:after {
     content: "zł";
 }
 
-.left .data-row {
-    float: right;
-}
-
-.right .data-row {
-    float: left;
-}
-
-#e-1-image {
-    background-image: url("../images/e1.jpg");
-}
-
-#e-2-image {
-    background-image: url("../images/e2.jpg");
-}
-
-#e-3-image {
-    background-image: url("../images/e3.jpg");
-}
-
-#d-1-image {
-    background-image: url("../images/d1.jpg");
-}
-
-#d-2-image {
-    background-image: url("../images/d2.jpg");
-}
-
-#d-3-image {
-    background-image: url("../images/d3.jpg");
-}
-
 #home.sidebar-button {
-    background-image: url("../images/home.png");
+    background-image: url("../images/mini-logo.png");
+}
+
+#list.sidebar-button {
+    background-image: url("../images/list.png");
 }
 
 #elctro.sidebar-button {
     background-image: url("../images/gym.png");
 }
 
-#diet.sidebar-button {
-    background-image: url("../images/diet.png");
+#tech.sidebar-button {
+    background-image: url("../images/tech.png");
 }
 
 #contact.sidebar-button {
@@ -374,54 +630,130 @@ body {
 }
 
 #club-info {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    display: table;
+    table-layout: fixed;
+    border-spacing: 20px;
+    padding: 10px 5vw;
     position: relative;
-    width: 40vw;
-    left: 50%;
-    margin-left: -20vw;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1080px;
+    margin: 0px auto;
 }
 
-#address {
+.club-info-item {
+    display: table-cell;
     position: relative;
-    display: inline-block;
-    width: 20vw;
-    height: 20vw;
+    width: 100%;
+    vertical-align: top;
+}
+
+.club-info-item .logo {
+    margin: 0px;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.club-info-item table {
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 5px;
+    position: relative;
+    text-align:right;
+    vertical-align: middle;
+    box-sizing: border-box;
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
     color: var(--white);
-    font-size: 1.2em;
-    text-align: center;
 }
 
-#address span {
-    display: block;
-    font-size: 1.6em;
-    line-height: 2em;
-    text-align: center;
+.club-info-item tr {
+    width: 100%;
 }
 
+.club-info-item td {
+    padding: 5px;
+    vertical-align: middle;
+}
+.club-info-item tr td:last-child {
+    width: 40px;
+    height: 40px;
+}
 
-#logo {
-    display: block;
-    position: relative;
-    width: 10vw;
-    height: 10vw;
-    background-repeat: no-repeat;
-    background-size: 10vw 10vw;
-    background-position: center center;
-    background-image: url("../images/home.png");
-    left: 50%;
-    margin-left: -5em;
+.club-info-item tr.address td:last-child {
+    background-image: url("../images/contact/location.png");
+    background-size: cover;
+}
+
+.club-info-item tr.phone td:last-child {
+    background-image: url("../images/contact/phone.png");
+    background-size: cover;
+}
+
+.club-info-item tr.email td:last-child {
+    background-image: url("../images/contact/email.png");
+    background-size: cover;
+}
+
+.club-info-item tr.bodylab td:last-child {
+    background-image: url("../images/contact/bodylab.png");
+    background-size: cover;
+}
+
+.club-info-item a {
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
+    color: var(--white);
+    text-decoration: none;
+}
+
+.club-info-item a:visited {
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
+    color: var(--white);
+    text-decoration: none;
 }
 
 #map {
     position: relative;
     display: inline-block;
-    width: 20vw;
-    height: 20vw;
-    float: right;
+    width: 100%;
+    padding-bottom: 100%;
+    height: auto;
     border-radius: 4px;
+    background-image: url("../images/staticmap.png");
+    background-size: cover;
 }
 
 #contact-panel {
-    padding: 10px;
+    padding-bottom: -10px;
+}
+
+.sm-container {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.sm {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+}
+
+#facebook {
+    background-image: url("../images/sm/facebook.png");
+}
+
+#instagram {
+    background-image: url("../images/sm/instagram.png");
+}
+
+#twitter {
+    background-image: url("../images/sm/twitter.png");
+}
+
+#youtube {
+    background-image: url("../images/sm/youtube.png");
 }

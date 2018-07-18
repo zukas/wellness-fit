@@ -150,6 +150,14 @@ window.Length = {
 (function (root) {
     "use strict";
 
+    root.br2nl = function (value) {
+        return value.replace(/<br ?\/?>\n/g, "\n");
+    }
+
+    root.nl2br = function (value) {
+        return value.replace(/\n/g, "<br />\n");
+    }
+
     root.hashCode = function(str) {
       var hash = 0, i, chr, len;
       if (str.length === 0) return hash;
@@ -222,6 +230,61 @@ window.Length = {
         }
 
         self_.endMove = resetDropPoint;
+    }
+
+
+    root.InputController = function (element, options) {
+
+        var self    = this,
+            elem    = null,
+            element = element;
+
+        if (options.multiline) {
+            elem = document.createElement("textarea");
+            elem.id = element.id;
+            elem.setAttribute("resize", false);
+            elem.className = element.className;
+            elem.value = br2nl(element.innerHTML.trim());
+            if (options.maxHeight) {
+                elem.style.maxHeight = options.maxHeight;
+            }
+            var offset  = elem.offsetHeight - elem.clientHeight,
+                length  = 0,
+                height  = elem.clientHeight,
+                reflow  = function () {
+                    async(function () {
+                        var tmp = elem.value.length;
+                        if(tmp < length){
+                            elem.style.height = "auto";
+                        }
+                        var hi = elem.scrollHeight + offset;
+                        if(hi > 0) {
+                            elem.style.height = hi + "px"; 
+                        }
+                        length = tmp;
+                        if(hi != height) {
+                            height = hi;
+                        }
+                    });
+                }
+            elem.addEventListener("keydown", reflow);
+            elem.addEventListener("keyup", reflow);
+
+            elem.finish = function () {
+                var text = elem.value.trim();
+                element.innerHTML = nl2br(text);
+                elem.parentNode.replaceChild(element, elem);
+                elem = null;
+                return text;
+            }
+
+            element.parentNode.replaceChild(elem, element);
+
+            reflow();
+        }
+        elem.ctrl = self;
+
+
     }
 
     root.InputObject = function (options) {

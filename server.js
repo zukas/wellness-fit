@@ -92,24 +92,21 @@ engine.system_updates();
 
 app.get('/', engine.index);
 
-app.get('/async/images/load/:id', engine.load_image);
-app.get('/async/preview/load/:id', engine.load_small_image);
-app.get('/async/thumb/load/:id', engine.load_thumb_image);
+// app.get('/async/images/load/:id', engine.load_image);
+// app.get('/async/preview/load/:id', engine.load_small_image);
+// app.get('/async/thumb/load/:id', engine.load_thumb_image);
 
-app.post('/async/user/login', engine.do_login);
-app.post('/async/user/logout', engine.do_logout);
-app.get('/admin', engine.login);
-app.get('/logout', engine.do_logout);
+// app.post('/async/user/login', engine.do_login);
+// app.post('/async/user/logout', engine.do_logout);
+
+// app.post('/async/home/set', engine.set_home_text);
 
 app.get('*', function(req, res) {
     res.redirect('/');
 });
-
 db.start({
     db: config.db,
     collections: [
-        "users",
-        "images"
     ]
 }, function() {
     if (secureServer) {

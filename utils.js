@@ -6,7 +6,7 @@ var util 		= require('util'),
 	winston 	= require('winston'),
 	logger 		= new (winston.Logger)({
 				    transports: [
-						new (winston.transports.File)({ filename: __dirname + '/msart.log', level: 'error' })
+						new (winston.transports.File)({ filename: __dirname + '/wellness-fit.log', level: 'error' })
 					    ]
 					});
 

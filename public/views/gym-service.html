@@ -1,0 +1,18 @@
+<div class="data-row">
+    {% if right %}
+    <div class="row-content right">
+        <div class="row-image" style="background-image: url(/async/images/load/{{data.image}});"></div>
+    </div>
+    {% endif %}
+    <div class="row-content splash">
+        <div class="row-text">
+            {{ data.text }}
+        </div>
+        <div class="item-price standard-button">data.price</div>
+    </div>
+    {% if not right %}
+    <div class="row-content">
+        <div class="row-image" style="background-image: url(/async/images/load/{{data.image}});"></div>
+    </div>
+    {% endif %}
+</div>

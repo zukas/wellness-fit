@@ -1,11 +1,8 @@
 "use strict";
 
 var check 	= require("./validate"),
-	images 	= require("./images"),
-	users 	= require("./users"),
 	config 	= require("../config")(),
 	url 	= require('url'),
-	sharp 	= require('sharp'),
 	store 	= [];
 
 check.installRegex("ObjectID", /^[\w\d]{24}$/);
@@ -47,9 +44,9 @@ exports.system_updates = function() {
 	setInterval(function () {
 
 	}, 1800000);
-}
+} 
 
-exports.index = function(req, res){
+exports.index = async function(req, res){
 
 	var renderData = req.session.renderData || {};
 	var sessionLang = req.session.lang || "pl";
@@ -62,7 +59,7 @@ exports.index = function(req, res){
 	}
 	renderData.map_key = config.google_maps; 
 	renderData.admin = req.session.admin;
-	// renderData.lang = lang.fetch(sessionLang);
+	renderData.username = req.session.username;
 	
 	res.render("site.html", renderData);
 	if (req.session.end) {
@@ -71,99 +68,6 @@ exports.index = function(req, res){
 	}
 };
 
-
-exports.login = function (req, res) {
-	if(req.session.admin) {
-		res.redirect('/');
-	} else {
-		res.render("login.html", config.debug ? { debug : true } : null);
-	}
-}
-
-exports.do_login = function (req, res) {
-	users.login(req.body, function (login_res) {
-		if(login_res.status) {
-			req.session.username = req.body.username;
-			req.session.admin = true;
-		}
-		res.send(login_res);
-	});
-}
-
-exports.do_logout = function (req, res) {
-	req.session.destroy();
-	req.session = null;
-	res.redirect('/');
-}
-
-exports.list_images = function (req, res) {
-	if(req.session.admin) {
-		images.list_images(function (data) {
-			res.send(data);
-		});
-	} else {
-		res.send({ status: false, error: "Not allowed"});
-	}
-}
-
-exports.load_image = function (req, res) {
-	images.load_image({ id : req.params.id }, function (data) {
-		var width 	= parseInt(req.query.width),
-			height 	= parseInt(req.query.height);
-			width = isNaN(width) ? null : width;
-			height = isNaN(height) ? null : height;
-		sharp(data.buffer)
-		.resize(width, height)
-			.toBuffer(function(err, buffer) {
-			res.writeHead(200, {'Content-Type': data.mimetype, "Cache-Control" : "no-transform,public,max-age=86400" });
-			res.end(buffer, 'binary');
-			});
-	});
-}
-
-exports.load_small_image = function (req, res) {
-
-	images.load_image({ id : req.params.id }, function (data) {
-		sharp(data.buffer)
-		.resize(null, 600)
-			.toBuffer(function(err, buffer) {
-			res.writeHead(200, {'Content-Type': data.mimetype, "Cache-Control" : "no-transform,public,max-age=86400" });
-			res.end(buffer, 'binary');
-		});
-	});
-}
-
-exports.load_thumb_image = function (req, res) {
-	images.load_image({ id : req.params.id }, function (data) {
-		sharp(data.buffer)
-		.resize(null, 300)
-			.toBuffer(function(err, buffer) {
-			res.writeHead(200, {'Content-Type': data.mimetype, "Cache-Control" : "no-transform,public,max-age=86400" });
-			res.end(buffer, 'binary');
-			});
-	});
-}
-
-
-exports.save_image = function (req, res) {
-	if(req.session.admin) {
-		images.save_image({ file: req.files.file }, function (data) {
-			res.send(data);
-		});
-	} else {
-		res.send({ status: false, error: "Not allowed"});
-	}
-}
-
-exports.delete_image = function (req, res) {
-	if(req.session.admin) {
-		images.delete_image(req.body, function (data) {
-			res.send(data);
-		});
-	} else {
-		res.send({ status: false, error: "Not allowed"});
-	}
-}
 
 exports.track_sessions = function (session_store) {
 	setInterval(function () {
@@ -201,20 +105,4 @@ exports.session_update = function (req, res, next) {
 		req.session.valid = new Date();
 	}
 	next();
-}
-
-
-exports.order_process = function (req, res) {
-	var data = {
-		sessionID : req.sessionID,
-		accept: config.domain + "/async/paypal/accept",
-		cancel: config.domain + "/async/paypal/cancel"
-	};
-	orders.approve(data, function (result) {
-		if(result.status) {
-			res.redirect(result.link);
-		} else {
-			res.send(result);
-		}
-	});
 }
