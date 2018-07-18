@@ -9,6 +9,8 @@
       <script type="text/javascript" src="scripts/morpheus.js" defer="defer"></script>
       <script type="text/javascript" src="scripts/web.common.js" defer="defer"></script>
       <script type="text/javascript" src="scripts/web.site.js" defer="defer"></script>
+      {% else %}
+      <script type="text/javascript" src="compiled/web.min.js" defer="defer"></script>
       {% endif %}
       {% block script %}
       {% endblock script %}
