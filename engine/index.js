@@ -46,7 +46,7 @@ exports.system_updates = function() {
 	}, 1800000);
 } 
 
-exports.index = async function(req, res){
+exports.index = function(req, res) {
 
 	var renderData = req.session.renderData || {};
 	var sessionLang = req.session.lang || "pl";
