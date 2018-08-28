@@ -71,13 +71,17 @@ input::-moz-focus-inner {
     --orange-d: #ce5213;
     --orange-l: #ea631f;
 
+    --h0-font-size: 2.0em;
     --h1-font-size: 1.5em;
     --h2-font-size: 1.2em;
     --body-font-size: 1em;
 
+    --h0-line-height: 2.2em;
     --h1-line-height: 1.8em;
     --h2-line-height: 1.4em;
     --body-line-height: 1.2em;
+
+    --def-ff: 'Signika', sans-serif;
 }
 
 b {
@@ -95,7 +99,7 @@ html {
     height: 100%;
     overflow: hidden;
     scroll-behavior: smooth;
-    font-family: 'Signika', sans-serif;
+    font-family: var(--def-ff);
 }
 
 body {
@@ -115,7 +119,7 @@ body {
 }
 
 textarea, input { 
-    font-family: 'Signika', sans-serif;
+    font-family: var(--def-ff);
 }
 
 .no-select {
@@ -528,8 +532,21 @@ textarea.info-text {
     display: table;
     table-layout: fixed;
     box-sizing: border-box;
+    border-collapse: separate;
     width: 100%;
-    border-spacing: 15px;
+    border-spacing: 0px;
+    margin-top: 10px;
+    border-radius: 3px;
+    border-right: 3px solid var(--white);
+    border-left: 3px solid var(--white);
+}
+
+#training-ems .training-ems-item table tr:nth-child(odd) {
+    background-color: var(--blue-l);
+}
+
+#training-ems .training-ems-item table tr:nth-child(even) {
+    background-color: var(--blue-d);
 }
 
 #training-ems .training-ems-item table th {
@@ -539,15 +556,14 @@ textarea.info-text {
     height: 100%;
     width: 100%;
     padding-bottom: 15px;
-    padding-right: 5px;
+    padding: 5px;
 }
 
 #training-ems .training-ems-item table td {
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    padding: 5px 0px;
-    padding-right: 5px;
+    padding: 5px;
 }
 
 #contact-panel {
@@ -677,7 +693,7 @@ table.price-list td.price-list-item:last-child {
 table.price-list-ems {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0px 5px;
+    border-spacing: 0px;
     border-left: 3px solid var(--white);
     border-right: 3px solid var(--white);
     border-radius: 3px;
@@ -686,6 +702,14 @@ table.price-list-ems {
 table.price-list-ems td {
     display: table-cell;
     min-width: auto;
+}
+
+table.price-list-ems tr:nth-child(odd) {
+    background-color: var(--blue-l);
+}
+
+table.price-list-ems tr:nth-child(even) {
+    background-color: var(--blue-d);
 }
 
 table.price-list-ems td:first-child {
@@ -708,10 +732,18 @@ table.price-list-ems td {
 table.price-list-lipo {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0px 5px;
+    border-spacing: 0px;
     border-left: 3px solid var(--white);
     border-right: 3px solid var(--white);
     border-radius: 3px;
+}
+
+table.price-list-lipo tr:nth-child(odd) {
+    background-color: var(--blue-l);
+}
+
+table.price-list-lipo tr:nth-child(even) {
+    background-color: var(--blue-d);
 }
 
 table.price-list-lipo td {
@@ -854,6 +886,14 @@ table.price-list td.price-list-item:last-child  {
     background-size: contain;
 }
 
+.gallery-content .gallery-item[type="enter1"] {
+    background-image: url("../images/site/enter1.jpg");
+}
+
+.gallery-content .gallery-item[type="enter2"] {
+    background-image: url("../images/site/enter2.jpg");
+}
+
 .gallery-content .gallery-item[type="train1"] {
     background-image: url("../images/site/train1.jpg");
 }
@@ -862,12 +902,20 @@ table.price-list td.price-list-item:last-child  {
     background-image: url("../images/site/train2.jpg");
 }
 
+.gallery-content .gallery-item[type="train3"] {
+    background-image: url("../images/site/train3.jpg");
+}
+
 .gallery-content .gallery-item[type="tech1"] {
     background-image: url("../images/site/tech1.jpg");
 }
 
 .gallery-content .gallery-item[type="tech2"] {
     background-image: url("../images/site/tech2.jpg");
+}
+
+.gallery-content .gallery-item[type="tech3"] {
+    background-image: url("../images/site/tech3.jpg");
 }
 
 .gallery-content .gallery-item[type="kids"] {
@@ -919,7 +967,7 @@ table.price-list td.price-list-item:last-child  {
     display: table;
     table-layout: fixed;
     border-spacing: 20px;
-    padding: 10px 5vw;
+    padding: 10px 2vw;
     position: relative;
     width: 100%;
     box-sizing: border-box;
@@ -1032,6 +1080,10 @@ table.price-list td.price-list-item:last-child  {
     font-weight: bold;
 }
 
+.open-hours .oh-row span {
+    white-space: nowrap;
+}
+
 
 #map {
     position: relative;
@@ -1040,8 +1092,54 @@ table.price-list td.price-list-item:last-child  {
     padding-bottom: 100%;
     height: auto;
     border-radius: 4px;
-    background-image: url("../images/staticmap.png");
-    background-size: cover;
+}
+
+#map .location-info {
+    position: relative;
+    background: #fafafa;
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    color: var(--blue);
+    background: var(--white);
+    font-family: var(--def-ff);
+    font-size: var(--body-font-size);
+    line-height: var(--body-line-height);
+    box-sizing: border-box;
+    outline: none;
+    border-left: 3px solid var(--gold);
+}
+
+#map .location-info-name {
+    position: relative;
+    display: block;
+    font-family: var(--def-ff);
+    font-size: var(--h0-font-size);
+    line-height: var(--h0-line-height);
+    height:  auto;
+    margin-bottom: 5px;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: var(--blue);
+    color: var(--white);
+    padding: 5px;
+    border-top-right-radius: 3px;
+}
+
+#map .location-info-address {
+    display: block;
+    min-height: 20px;
+    max-height: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-family: var(--def-ff);
+    font-size: var(--h2-font-size);
+    line-height: var(--h2-line-height);
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #contact-panel {

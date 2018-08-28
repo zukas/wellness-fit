@@ -9,7 +9,7 @@ window.addEventListener("load", function() {
 <script type="text/javascript">
 window.maps = true;
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ map_key }}&language=pl&libraries=places" defer="defer"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ map_key }}&language=pl&libraries=places&callback=init_maps" defer="defer"></script>
 {% else %}
 <script type="text/javascript">
 window.maps = false;
@@ -167,18 +167,10 @@ window.maps = false;
                 <div class="row-content splash">
                     <div class="title">Plany treningowe EMS / EMA i Lipo Light</div>
                     <table class="price-list">
-<!--                         <tr>
-                            <td class="price-list-item plan-title">
-                                Cennik treningów i planów treningowych
-                            </td>
-                            <td class="price-list-item plan-title">
-                                Cennik Lipo Light
-                            </td>
-                        </tr> -->
                         <tr>
                             <td class="price-list-item">
                                 <div class="plan-title">
-                                Cennik treningów i planów treningowych
+                                Cennik treningów EMS / EMA
                                 </div>
                                 <table class="price-list-ems">
                                     <tr>
@@ -258,13 +250,21 @@ window.maps = false;
     </div>
     <div id="gallery-panel" class="panel">
         <div class="gallery-content">
-            <div class="gallery-item" type="train1">
+            <div class="gallery-item" type="enter1">
             </div>
-            <div class="gallery-item" type="train2">
+            <div class="gallery-item" type="enter2">
             </div>
             <div class="gallery-item" type="tech1">
             </div>
             <div class="gallery-item" type="tech2">
+            </div>
+            <div class="gallery-item" type="tech3">
+            </div>
+            <div class="gallery-item" type="train1">
+            </div>
+            <div class="gallery-item" type="train2">
+            </div>
+            <div class="gallery-item" type="train3">
             </div>
             <div class="gallery-item" type="kids">
             </div>
@@ -306,7 +306,7 @@ window.maps = false;
                             <div class="oh-row">Poniedziałek-Piątek: 09:00-19:00</div>
                             <div class="oh-row">Sobota: 10:00-16:00</div>
                             <div class="oh-row info">
-                                Możliwe elastyczne godziny otwarcia między 07:00 - 22:00.
+                                Możliwe elastyczne godziny otwarcia między <span>07:00 - 22:00.</span>
                                 <br/>
                                 Zadzwoń i umów się bez dodatkowych opłat!
                             </div>
