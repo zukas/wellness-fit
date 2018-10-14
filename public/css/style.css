@@ -50,6 +50,10 @@ input::-moz-focus-inner {
   border: 0;
 }
 
+h1 {
+    display: none;
+}
+
 :root {
     --white: #bdc3c7;
     --white-d: #bec2c6;
@@ -513,6 +517,10 @@ textarea.info-text {
     border-left: 4px solid var(--green);
 }
 
+#training-ems .training-ems-item h3 {
+    font-weight: bold;
+}
+
 #training-ems .training-ems-item:nth-child(1) {
     text-align: right;
 }
@@ -675,6 +683,23 @@ table.price-list {
     border-collapse: separate;
 }
 
+table.price-list:not([promo="0"]) .promo-splash {
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    background-color: var(--gold);
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    color: black;
+}
+
+table.price-list .promo-splash {
+    display: none;
+}
+
 table.price-list td.price-list-item {
     min-width: 240px;
     display: inline-block;
@@ -693,6 +718,7 @@ table.price-list td.price-list-item:last-child {
 table.price-list-ems {
     width: 100%;
     border-collapse: separate;
+    table-layout: fixed;
     border-spacing: 0px;
     border-left: 3px solid var(--white);
     border-right: 3px solid var(--white);
@@ -719,7 +745,8 @@ table.price-list-ems td:first-child {
 }
 
 table.price-list-ems td:last-child {
-    width: 60px;
+    width: 80px;
+    white-space: nowrap;
 }
 
 table.price-list-ems td {
@@ -727,6 +754,22 @@ table.price-list-ems td {
     line-height: var(--body-line-height);
     padding-right: 20px;
     vertical-align: middle;
+}
+
+table.price-list:not([promo="0"]) td span {
+    text-decoration: line-through;
+}
+
+table.price-list td bh {
+    display: none;
+}
+
+table.price-list:not([promo="0"]) td bh {
+    display: inline;
+}
+
+table.price-list:not([promo="0"]) td bh:before {
+    content: " ";
 }
 
 table.price-list-lipo {
@@ -758,7 +801,8 @@ table.price-list-lipo td:first-child {
 }
 
 table.price-list-lipo td:last-child {
-    width: 60px;
+    width: 80px;
+    white-space: nowrap;
 }
 
 table.price-list-lipo td {

@@ -1,12 +1,12 @@
 
 var cfg = {
-	ssl : false,
+	ssl : true,
 	privateKey: "/etc/letsencrypt/live/wellness-fit/privkey.pem",
 	publicKey: "/etc/letsencrypt/live/wellness-fit/cert.pem",
 	chainKey: "/etc/letsencrypt/live/wellness-fit/chain.pem",
 	logging: true,
 	debug: false,
-	domain: "http://localhost:8080",
+	domain: "https://wellness-fit.pl",
 	master: "julius.zukauskas@gmx.com",
 	db : {
 		server: "localhost",
@@ -15,7 +15,7 @@ var cfg = {
 	},
 	google_maps : "",
 	session: {
-		secure: true,
+		secure: false,
 		secret: ''
 	}
 }
